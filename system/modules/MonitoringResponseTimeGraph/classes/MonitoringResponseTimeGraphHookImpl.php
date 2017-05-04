@@ -77,15 +77,18 @@ class MonitoringResponseTimeGraphHookImpl extends \Backend
     $strData = "";
     while($objMonitoringTest->next())
     {
-      $strData .= "{'x': new Date"
-                    . "("
-                      . date('Y', $objMonitoringTest->date) . ", "
-                      . (date('m', $objMonitoringTest->date) - 1) . ", "
-                      . date('d', $objMonitoringTest->date) . ", "
-                      . date('H', $objMonitoringTest->date) . ", "
-                      . date('i', $objMonitoringTest->date) . ", "
-                      . date('s', $objMonitoringTest->date)
-                    . "), 'y': '" . $objMonitoringTest->response_time . "'},";
+      if ($objMonitoringTest->response_time > 0.0)
+      {
+        $strData .= "{'x': new Date"
+                      . "("
+                        . date('Y', $objMonitoringTest->date) . ", "
+                        . (date('m', $objMonitoringTest->date) - 1) . ", "
+                        . date('d', $objMonitoringTest->date) . ", "
+                        . date('H', $objMonitoringTest->date) . ", "
+                        . date('i', $objMonitoringTest->date) . ", "
+                        . date('s', $objMonitoringTest->date)
+                      . "), 'y': '" . $objMonitoringTest->response_time . "'},";
+      }
     }
     
     $today = time();
