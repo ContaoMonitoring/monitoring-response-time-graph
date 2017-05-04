@@ -119,6 +119,7 @@ class MonitoringResponseTimeGraphHookImpl extends \Backend
   var options = {
     drawPoints: {style: 'circle', size: 4},
     dataAxis: {left: {range: {min: 0}, title: {text: '{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['y_axis_label']}'}}},
+    height: '200px',
     start: new Date({$startDateYear}, {$startDateMonth}, {$startDateDay}, 0, 0, 0),
     end: new Date({$endDateYear}, {$endDateMonth}, {$endDateDay}, 0, 0, 0)
   };
