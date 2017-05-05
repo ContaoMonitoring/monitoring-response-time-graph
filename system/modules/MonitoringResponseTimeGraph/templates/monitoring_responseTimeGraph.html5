@@ -107,8 +107,7 @@
     var options = {
       drawPoints: {style: 'circle', size: 4},
       dataAxis: {left: {range: {min: 0}, title: {text: '<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['y_axis_label']; ?>'}}},
-      //height: '200px',
-      //legend: true,
+      height: '600px',
       start: new Date(<?php echo $this->startDateYear; ?>, <?php echo $this->startDateMonth; ?>, <?php echo $this->startDateDay; ?>, 0, 0, 0),
       end: new Date(<?php echo $this->endDateYear; ?>, <?php echo $this->endDateMonth; ?>, <?php echo $this->endDateDay; ?>, 0, 0, 0)
     };
