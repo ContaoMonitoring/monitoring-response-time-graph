@@ -28,11 +28,8 @@
  */
 
 /**
- * Response time graph menu
+ * Misc
  */
-$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['zoom-in']    = 'Vergrößern';
-$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['zoom-out']   = 'Verkleinern';
-$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['move-left']  = 'Nach links bewegen';
-$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['move-right'] = 'Nach rechts bewegen';
+$GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline'] = 'Monitoring response times of all active monitoring entries';
 
 ?>

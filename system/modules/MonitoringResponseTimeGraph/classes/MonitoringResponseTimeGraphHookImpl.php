@@ -106,10 +106,10 @@ class MonitoringResponseTimeGraphHookImpl extends \Backend
     $arrHeaderFields[$GLOBALS['TL_LANG']['tl_monitoring']['responseTimeGraph'][0]] = <<<EOT
 <div id="monitoring-responseTimeGraph">
   <div id="monitoring-responseTimeGraph-menu">
-    <img id="zoomInResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/zoom-in.png" alt="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['zoom-in']}" title="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['zoom-in']}" />
-    <img id="zoomOutResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/zoom-out.png" alt="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['zoom-out']}" title="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['zoom-out']}" />
-    <img id="moveLeftResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-left.png" alt="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['move-left']}" title="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['move-left']}" />
-    <img id="moveRightResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-right.png" alt="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['move-right']}" title="{$GLOBALS['TL_LANG']['tl_monitoring_test']['responseTimeGraph']['menu']['move-right']}" />
+    <img id="zoomInResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/zoom-in.png" alt="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-in']}" title="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-in']}" />
+    <img id="zoomOutResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/zoom-out.png" alt="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-out']}" title="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-out']}" />
+    <img id="moveLeftResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-left.png" alt="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-left']}" title="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-left']}" />
+    <img id="moveRightResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-right.png" alt="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right']}" title="{$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right']}" />
   </div>
 </div>
 

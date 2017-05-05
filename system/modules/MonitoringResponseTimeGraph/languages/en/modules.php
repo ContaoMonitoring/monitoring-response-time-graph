@@ -32,4 +32,9 @@
  */
 $GLOBALS['TL_LANG']['MOD']['MonitoringResponseTimeGraph'] = 'Provides a graph component to visualize the response times for the Contao Monitoring system.';
 
+/**
+ * Backend modules
+ */
+$GLOBALS['TL_LANG']['MOD']['monitoringResponseTimeGraph'] = array('Response times', 'Displays a complete overview of the response times of all monitoring entries.');
+
 ?>

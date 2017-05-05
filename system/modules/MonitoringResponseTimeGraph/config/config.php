@@ -27,6 +27,12 @@
  * @license    LGPL
  */
 
+$GLOBALS['BE_MOD']['ContaoMonitoring']['monitoringResponseTimeGraph'] = array
+(
+  'callback'   => 'ModuleResponseTimeGraph',
+  'icon'       => 'system/modules/MonitoringResponseTimeGraph/assets/icon.png'
+);
+
 /**
  * Hooks
  */

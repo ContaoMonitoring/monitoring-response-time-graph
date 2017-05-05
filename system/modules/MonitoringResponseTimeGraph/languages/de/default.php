@@ -32,4 +32,12 @@
  */
 $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['y_axis_label'] = 'Zeit in Sekunden';
 
+/**
+ * Response time graph menu
+ */
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-in']    = 'Vergrößern';
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-out']   = 'Verkleinern';
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-left']  = 'Nach links bewegen';
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right'] = 'Nach rechts bewegen';
+
 ?>

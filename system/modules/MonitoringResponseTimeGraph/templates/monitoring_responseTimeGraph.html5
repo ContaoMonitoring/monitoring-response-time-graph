@@ -1,0 +1,197 @@
+
+<div id="tl_buttons">
+  <a href="<?= $this->href ?>" class="header_back" title="<?= $this->title ?>"><?= $this->button ?></a>
+</div>
+
+<div id="tl_extension">
+  <h2 class="sub_headline"><?= $this->headline ?></h2>
+  <style type="text/css">
+    .vis-point {
+      stroke-width:2px;
+      fill-opacity:1.0;
+    }
+
+    .vis-legend-background {
+      stroke-width:1px;
+      fill-opacity:0.9;
+      fill: #ffffff;
+      stroke: #c2c2c2;
+    }
+
+
+    .vis-outline {
+      stroke-width:1px;
+      fill-opacity:1;
+      fill: #ffffff;
+      stroke: #e5e5e5;
+    }
+
+    .vis-icon-fill {
+      fill-opacity:0.3;
+      stroke: none;
+    }
+
+    div.description-container {
+      float:left;
+      height:30px;
+      width:160px;
+      padding-left:5px;
+      padding-right:5px;
+      line-height: 15px;
+      overflow: hidden;
+    }
+
+    div.icon-container {
+      float:left;
+    }
+
+    div.legend-element-container {
+      display:inline-block;
+      width:200px;
+      height:30px;
+      border-style:solid;
+      border-width:1px;
+      border-color: #e0e0e0;
+      background-color: #ffffff;
+      margin:4px;
+      padding:4px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor:pointer;
+    }
+    div.legend-element-container.hidden {
+      background-color: #d3e6ff;
+    }
+
+    svg.legend-icon {
+      width:30px;
+      height:30px;
+    }
+
+    
+  </style>
+  <div id="monitoring-responseTimeGraph">
+    <div id="monitoring-responseTimeGraph-menu">
+      <img id="zoomInResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/zoom-in.png" alt="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-in']; ?>" title="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-in']; ?>" />
+      <img id="zoomOutResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/zoom-out.png" alt="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-out']; ?>" title="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-out']; ?>" />
+      <img id="moveLeftResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-left.png" alt="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-left']; ?>" title="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-left']; ?>" />
+      <img id="moveRightResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-right.png" alt="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right']; ?>" title="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right']; ?>" />
+    </div>
+  </div>
+  <div id="Legend" class="external-legend"></div>
+
+  <script type="text/javascript">
+    // create a dataSet with groups
+    var groups = new vis.DataSet();
+<?php foreach ($this->chartGroups as $groupId=>$group): ?>
+    groups.add(
+    {
+      id: <?php echo $groupId; ?>,
+      content: '<b><?php echo $group['customer']; ?></b><br/><?php echo $group['website']; ?>',
+      options: {
+        drawPoints: {
+            style: 'circle'
+        }
+      }
+    });
+<?php endforeach; ?>
+    // create data
+    // note that months are zero-based in the JavaScript Date object
+    var data = new vis.DataSet([<?php echo $this->chartData; ?>]);
+
+    // specify options
+    var options = {
+      drawPoints: {style: 'circle', size: 4},
+      dataAxis: {left: {range: {min: 0}, title: {text: '<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['y_axis_label']; ?>'}}},
+      //height: '200px',
+      //legend: true,
+      start: new Date(<?php echo $this->startDateYear; ?>, <?php echo $this->startDateMonth; ?>, <?php echo $this->startDateDay; ?>, 0, 0, 0),
+      end: new Date(<?php echo $this->endDateYear; ?>, <?php echo $this->endDateMonth; ?>, <?php echo $this->endDateDay; ?>, 0, 0, 0)
+    };
+
+    // create the graph
+    var container = document.getElementById('monitoring-responseTimeGraph');
+    responseTimeGraph = new vis.Graph2d(container, data, groups, options);
+    
+    /**
+   * this function fills the external legend with content using the getLegend() function.
+   */
+  function populateExternalLegend() {
+    var groupsData = groups.get();
+    var legendDiv = document.getElementById("Legend");
+    legendDiv.innerHTML = "";
+
+    // get for all groups:
+    for (var i = 0; i < groupsData.length; i++) {
+      // create divs
+      var containerDiv = document.createElement("div");
+      var iconDiv = document.createElement("div");
+      var descriptionDiv = document.createElement("div");
+
+      // give divs classes and Ids where necessary
+      containerDiv.className = 'legend-element-container';
+      containerDiv.id = groupsData[i].id + "_legendContainer";
+      iconDiv.className = "icon-container";
+      descriptionDiv.className = "description-container";
+      
+
+      // get the legend for this group.
+      var legend = responseTimeGraph.getLegend(groupsData[i].id,30,30);
+      
+      // set title attribute to support tooltips
+      containerDiv.title = legend.label;
+      
+      // append class to icon. All styling classes from the vis.css/vis-timeline-graph2d.min.css have been copied over into the head here to be able to style the
+      // icons with the same classes if they are using the default ones.
+      legend.icon.setAttributeNS(null, "class", "legend-icon");
+
+      // append the legend to the corresponding divs
+      iconDiv.appendChild(legend.icon);
+      descriptionDiv.innerHTML = legend.label;
+
+      // determine the order for left and right orientation
+      if (legend.orientation == 'left') {
+        descriptionDiv.style.textAlign = "left";
+        containerDiv.appendChild(iconDiv);
+        containerDiv.appendChild(descriptionDiv);
+      }
+      else {
+        descriptionDiv.style.textAlign = "right";
+        containerDiv.appendChild(descriptionDiv);
+        containerDiv.appendChild(iconDiv);
+      }
+
+      // append to the legend container div
+      legendDiv.appendChild(containerDiv);
+
+      // bind click event to this legend element.
+      containerDiv.onclick = toggleGraph.bind(this,groupsData[i].id);
+    }
+  }
+
+  /**
+   * This function switchs the visible option of the selected group on an off.
+   * @param groupId
+   */
+  function toggleGraph(groupId) {
+    // get the container that was clicked on.
+    var container = document.getElementById(groupId + "_legendContainer")
+    // if visible, hide
+    if (responseTimeGraph.isGroupVisible(groupId) == true) {
+      groups.update({id:groupId, visible:false});
+      container.className = container.className + " hidden";
+    }
+    else { // if invisible, show
+      groups.update({id:groupId, visible:true});
+      container.className = container.className.replace("hidden","");
+    }
+  }
+
+  populateExternalLegend();
+
+  </script>
+</div>
