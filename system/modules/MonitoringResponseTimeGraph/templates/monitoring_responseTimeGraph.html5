@@ -52,7 +52,7 @@
       border-style:solid;
       border-width:1px;
       border-color: #e0e0e0;
-      background-color: #ffffff;
+      background-color: #d3e6ff;
       margin:4px;
       padding:4px;
       -webkit-touch-callout: none;
@@ -64,7 +64,7 @@
       cursor:pointer;
     }
     div.legend-element-container.hidden {
-      background-color: #d3e6ff;
+      background-color: #ffffff;
     }
 
     svg.legend-icon {
