@@ -71,24 +71,25 @@ class ModuleResponseTimeGraph extends \BackendModule
     {
       while ($objMonitoringEntry->next())
       {
-        $objMonitoringTest = $this->Database->prepare("SELECT * FROM tl_monitoring_test WHERE pid = ? ORDER BY date")
-                           ->execute($objMonitoringEntry->id);
-        
         $arrGroups[$objMonitoringEntry->id] = array('customer' => $objMonitoringEntry->customer, 'website' => $objMonitoringEntry->website);
         
-        while($objMonitoringTest->next())
+        $objMonitoringTest = \MonitoringTestModel::findByPid($objMonitoringEntry->id, array('order' => "date"));
+        if ($objMonitoringTest !== null)
         {
-          if ($objMonitoringTest->response_time > 0.0)
+          while($objMonitoringTest->next())
           {
-            $strData .= "{'x': new Date"
-                          . "("
-                            . date('Y', $objMonitoringTest->date) . ", "
-                            . (date('m', $objMonitoringTest->date) - 1) . ", "
-                            . date('d', $objMonitoringTest->date) . ", "
-                            . date('H', $objMonitoringTest->date) . ", "
-                            . date('i', $objMonitoringTest->date) . ", "
-                            . date('s', $objMonitoringTest->date)
-                          . "), 'y': '" . $objMonitoringTest->response_time . "', 'group': " . $objMonitoringEntry->id . "},";
+            if ($objMonitoringTest->response_time > 0.0)
+            {
+              $strData .= "{'x': new Date"
+                            . "("
+                              . date('Y', $objMonitoringTest->date) . ", "
+                              . (date('m', $objMonitoringTest->date) - 1) . ", "
+                              . date('d', $objMonitoringTest->date) . ", "
+                              . date('H', $objMonitoringTest->date) . ", "
+                              . date('i', $objMonitoringTest->date) . ", "
+                              . date('s', $objMonitoringTest->date)
+                            . "), 'y': '" . $objMonitoringTest->response_time . "', 'group': " . $objMonitoringEntry->id . "},";
+            }
           }
         }
       }
