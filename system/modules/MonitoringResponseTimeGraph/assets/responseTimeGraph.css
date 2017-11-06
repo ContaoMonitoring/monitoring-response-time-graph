@@ -1,13 +1,22 @@
 .tl_header_table {
-	width: 100%;
+  width: 100%;
 }
 
 .tl_header_table td:nth-child(2n+1) {
-    width: 1%;
+  width: 1%;
 }
 
 #monitoring-responseTimeGraph {
-	width: 600px;
-	position: relative;
-	padding: 2px 0;
+  width: 600px;
+  position: relative;
+  padding: 2px 0;
+}
+
+text {
+  display: none;
+  cursor: default;
+}
+
+circle:hover + text {
+  display: block;
 }

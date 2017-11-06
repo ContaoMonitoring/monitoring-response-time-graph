@@ -51,6 +51,7 @@ class ModuleResponseTimeGraph extends \BackendModule
   protected function compile()
   {
     \System::loadLanguageFile('tl_monitoring_responseTimeGraph');
+    \System::loadLanguageFile('tl_monitoring_test');
     
     // Make sure the dcaconfig.php file is loaded
     @include TL_ROOT . '/system/config/vis.js.php';
@@ -88,7 +89,7 @@ class ModuleResponseTimeGraph extends \BackendModule
                               . date('H', $objMonitoringTest->date) . ", "
                               . date('i', $objMonitoringTest->date) . ", "
                               . date('s', $objMonitoringTest->date)
-                            . "), 'y': '" . $objMonitoringTest->response_time . "', 'group': " . $objMonitoringEntry->id . "},";
+                            . "), 'y': '" . $objMonitoringTest->response_time . "', 'group': " . $objMonitoringEntry->id . ", 'label': {'content': '" . sprintf($GLOBALS['TL_LANG']['tl_monitoring_test']['response_time_format'], $objMonitoringTest->response_time) . "'}},";
             }
           }
         }
