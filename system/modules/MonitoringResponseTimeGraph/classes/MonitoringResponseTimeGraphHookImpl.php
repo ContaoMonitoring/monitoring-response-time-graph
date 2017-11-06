@@ -87,7 +87,7 @@ class MonitoringResponseTimeGraphHookImpl extends \Backend
                           . date('H', $objMonitoringTest->date) . ", "
                           . date('i', $objMonitoringTest->date) . ", "
                           . date('s', $objMonitoringTest->date)
-                        . "), 'y': '" . $objMonitoringTest->response_time . "'},";
+          . "), 'y': '" . $objMonitoringTest->response_time . "', 'label': {'content': '" . sprintf($GLOBALS['TL_LANG']['tl_monitoring_test']['response_time_format'], $objMonitoringTest->response_time) . "'}},";
         }
       }
     }
