@@ -7,9 +7,17 @@
 }
 
 #monitoring-responseTimeGraph {
-  width: 600px;
+  width: calc(100% - 18px - 18px);
   position: relative;
   padding: 2px 0;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+#monitoring-responseTimeGraph-legend {
+    margin-left: 18px;
+    margin-right: 18px;
+    width: calc(100% - 18px - 18px);
 }
 
 text {

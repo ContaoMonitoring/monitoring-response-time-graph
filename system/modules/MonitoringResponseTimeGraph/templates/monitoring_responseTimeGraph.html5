@@ -89,7 +89,7 @@
       <img id="moveRightResponseTimeGraph" src="system/modules/MonitoringResponseTimeGraph/assets/move-right.png" alt="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right']; ?>" title="<?php echo $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right']; ?>" />
     </div>
   </div>
-  <div id="Legend" class="external-legend"></div>
+  <div id="monitoring-responseTimeGraph-legend"></div>
 
   <script type="text/javascript">
     // create a dataSet with groups
@@ -128,7 +128,7 @@
    */
   function populateExternalLegend() {
     var groupsData = groups.get();
-    var legendDiv = document.getElementById("Legend");
+    var legendDiv = document.getElementById("monitoring-responseTimeGraph-legend");
     legendDiv.innerHTML = "";
 
     // get for all groups:
