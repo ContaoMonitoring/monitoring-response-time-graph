@@ -7,9 +7,13 @@
 }
 
 #monitoring-responseTimeGraph {
-  width: calc(100% - 18px - 18px);
+  width: 100%;
   position: relative;
   padding: 2px 0;
+}
+
+#tl_extension #monitoring-responseTimeGraph {
+  width: calc(100% - 18px - 18px);
   margin-left: 18px;
   margin-right: 18px;
 }
