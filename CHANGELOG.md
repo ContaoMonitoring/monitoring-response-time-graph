@@ -1,6 +1,14 @@
 Contao Extension "MonitoringResponseTimeGraph"
 ==============================================
 
+Version 1.1.2 (2018-02-15)
+--------------------------
+- Fixes representation in the back end single view for each monitoring entry (see #2)
+
+Version 1.1.1 (2017-11-17)
+--------------------------
+- Fixes representation in the back end (set correct width of the chart)
+
 Version 1.1.0 (2017-11-06)
 --------------------------
 - Adding label to each point to show the value on mouse over
