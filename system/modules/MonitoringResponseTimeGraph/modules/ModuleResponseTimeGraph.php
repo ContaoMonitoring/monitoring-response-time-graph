@@ -2,7 +2,7 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2017 Leo Feyer
+ * Copyright (C) 2005-2018 Leo Feyer
  *
  * Formerly known as TYPOlight Open Source CMS.
  *
@@ -21,7 +21,7 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2017-2017
+ * @copyright  Cliff Parnitzky 2017-2018
  * @author     Cliff Parnitzky
  * @package    MonitoringResponseTimeGraph
  * @license    LGPL
@@ -67,7 +67,22 @@ class ModuleResponseTimeGraph extends \BackendModule
     $arrGroups = array();
     $strData = "";
     
-    $objMonitoringEntry = \MonitoringModel::findAllActive();
+    $arrFilteredIds = array();
+    if (!empty(\Input::get("ids")))
+    {
+      $arrFilteredIds = explode(",", \Input::get("ids"));
+    }
+    
+    $objMonitoringEntry = null;
+    if (!empty($arrFilteredIds))
+    {
+      $objMonitoringEntry = \MonitoringModel::findMultipleByIds($arrFilteredIds);
+    }
+    else
+    {
+      $objMonitoringEntry = \MonitoringModel::findAllActive();
+    }
+    
     if ($objMonitoringEntry !== null)
     {
       while ($objMonitoringEntry->next())
@@ -122,7 +137,7 @@ class ModuleResponseTimeGraph extends \BackendModule
     $this->Template->href = $this->getReferer(true);
     $this->Template->title = specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']);
     $this->Template->button = $GLOBALS['TL_LANG']['MSC']['backBT'];
-    $this->Template->headline = $GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline'];
+    $this->Template->headline = empty($arrFilteredIds) ? $GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline']['active'] : $GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline']['filtered'];
   }
 }
 

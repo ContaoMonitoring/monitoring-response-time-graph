@@ -21,20 +21,29 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2017-2018
+ * @copyright  Cliff Parnitzky 2018-2018
  * @author     Cliff Parnitzky
  * @package    MonitoringResponseTimeGraph
  * @license    LGPL
  */
 
 /**
- * Fields
+ * Add css for styling global operations button
  */
-$GLOBALS['TL_LANG']['tl_monitoring']['responseTimeGraph'] = array('Response times', '');
+$GLOBALS['TL_CSS'][] = 'system/modules/MonitoringResponseTimeGraph/assets/styles.css';
 
 /**
- * Buttons
+ * Add global operations
  */
-$GLOBALS['TL_LANG']['tl_monitoring']['filteredResponseTimeGraphs'] = array('Show response times for filter', 'Show all response times for the current filtered monitoring entries.');
+array_insert($GLOBALS['TL_DCA']['tl_monitoring']['list']['global_operations'], count($GLOBALS['TL_DCA']['tl_monitoring']['list']['global_operations']) - 1, array
+(
+    'filteredResponseTimeGraphs' => array
+    (
+        'label'               => &$GLOBALS['TL_LANG']['tl_monitoring']['filteredResponseTimeGraphs'],
+        'href'                => 'key=navigateToMonitoringResponseTimeGraph',
+        'class'               => 'header_icon tl_monitoring_filteredResponseTimeGraphs',
+        'attributes'          => 'onclick="Backend.getScrollOffset()"'
+    )
+));
 
 ?>

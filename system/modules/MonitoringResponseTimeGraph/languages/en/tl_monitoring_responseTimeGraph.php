@@ -2,7 +2,7 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2017 Leo Feyer
+ * Copyright (C) 2005-2018 Leo Feyer
  *
  * Formerly known as TYPOlight Open Source CMS.
  *
@@ -21,7 +21,7 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2017-2017
+ * @copyright  Cliff Parnitzky 2017-2018
  * @author     Cliff Parnitzky
  * @package    MonitoringResponseTimeGraph
  * @license    LGPL
@@ -30,6 +30,7 @@
 /**
  * Misc
  */
-$GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline'] = 'Monitoring response times of all active monitoring entries';
+$GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline']['active']   = 'Monitoring response times of all active monitoring entries';
+$GLOBALS['TL_LANG']['tl_monitoring_responseTimeGraph']['headline']['filtered'] = 'Monitoring response times of the filtered monitoring entries';
 
 ?>
