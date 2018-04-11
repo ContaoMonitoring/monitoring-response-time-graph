@@ -2,7 +2,7 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2017 Leo Feyer
+ * Copyright (C) 2005-2018 Leo Feyer
  *
  * Formerly known as TYPOlight Open Source CMS.
  *
@@ -21,7 +21,7 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2017-2017
+ * @copyright  Cliff Parnitzky 2017-2018
  * @author     Cliff Parnitzky
  * @package    MonitoringResponseTimeGraph
  * @license    LGPL
@@ -32,6 +32,11 @@ $GLOBALS['BE_MOD']['ContaoMonitoring']['monitoringResponseTimeGraph'] = array
   'callback'   => 'ModuleResponseTimeGraph',
   'icon'       => 'system/modules/MonitoringResponseTimeGraph/assets/icon.png'
 );
+
+/**
+ * Extend backend module (register new functions)
+ */
+$GLOBALS['BE_MOD']['ContaoMonitoring']['monitoring']['navigateToMonitoringResponseTimeGraph'] = array('MonitoringResponseTimeGraph', 'navigateToMonitoringResponseTimeGraph');
 
 /**
  * Hooks

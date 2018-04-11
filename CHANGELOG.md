@@ -1,6 +1,10 @@
 Contao Extension "MonitoringResponseTimeGraph"
 ==============================================
 
+Version 1.2.0 (2018-04-11)
+--------------------------
+- Added option to filter full response graph view (see #1)
+
 Version 1.1.2 (2018-02-15)
 --------------------------
 - Fixes representation in the back end single view for each monitoring entry (see #2)
