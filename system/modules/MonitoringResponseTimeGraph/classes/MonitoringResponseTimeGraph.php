@@ -56,12 +56,29 @@ class MonitoringResponseTimeGraph extends \Backend
   public function navigateToMonitoringResponseTimeGraph()
   {
     $arrFilter = \Session::getInstance()->get('filter')['tl_monitoring'];
+    $arrSearch = \Session::getInstance()->get('search')['tl_monitoring'];
     unset($arrFilter['limit']);
     
     $select = "SELECT id FROM tl_monitoring";
-    if (!empty($arrFilter))
+    if (!empty($arrFilter) || !empty($arrSearch['value']))
     {
-      $select .= " WHERE " . implode(" = ? AND ", array_keys($arrFilter)) . " = ?";
+      $select .= " WHERE ";
+      
+      if (!empty($arrFilter))
+      {
+        $select .= implode(" = ? AND ", array_keys($arrFilter)) . " = ?";
+      }
+      
+      if (!empty($arrSearch['value']))
+      {
+        if (!empty($arrFilter))
+        {
+          $select .= " AND ";
+        }
+        $select .= " " . $arrSearch['field'] . " LIKE ?";
+        // add the value to the paramters array
+        $arrFilter[$arrSearch['field']] = "%" . $arrSearch['value'] . "%";
+      }
     }
     
     $objIds = \Database::getInstance()->prepare($select)
