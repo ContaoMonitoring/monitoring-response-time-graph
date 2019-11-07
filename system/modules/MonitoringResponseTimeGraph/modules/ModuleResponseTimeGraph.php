@@ -87,7 +87,7 @@ class ModuleResponseTimeGraph extends \BackendModule
     {
       while ($objMonitoringEntry->next())
       {
-        $arrGroups[$objMonitoringEntry->id] = array('customer' => $objMonitoringEntry->customer, 'website' => $objMonitoringEntry->website);
+        $hasValidResponseTimes = false;
         
         $objMonitoringTest = \MonitoringTestModel::findByPid($objMonitoringEntry->id, array('order' => "date"));
         if ($objMonitoringTest !== null)
@@ -96,6 +96,8 @@ class ModuleResponseTimeGraph extends \BackendModule
           {
             if ($objMonitoringTest->response_time > 0.0)
             {
+              $hasValidResponseTimes = true;
+              
               $strData .= "{'x': new Date"
                             . "("
                               . date('Y', $objMonitoringTest->date) . ", "
@@ -107,6 +109,11 @@ class ModuleResponseTimeGraph extends \BackendModule
                             . "), 'y': '" . $objMonitoringTest->response_time . "', 'group': " . $objMonitoringEntry->id . ", 'label': {'content': '" . sprintf($GLOBALS['TL_LANG']['tl_monitoring_test']['response_time_format'], $objMonitoringTest->response_time) . "'}},";
             }
           }
+        }
+        
+        if ($hasValidResponseTimes)
+        {
+          $arrGroups[$objMonitoringEntry->id] = array('customer' => $objMonitoringEntry->customer, 'website' => $objMonitoringEntry->website);
         }
       }
     }
