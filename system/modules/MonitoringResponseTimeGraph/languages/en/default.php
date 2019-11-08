@@ -2,7 +2,7 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2017 Leo Feyer
+ * Copyright (C) 2005-2019 Leo Feyer
  *
  * Formerly known as TYPOlight Open Source CMS.
  *
@@ -21,7 +21,7 @@
  * Software Foundation website at <http://www.gnu.org/licenses/>.
  *
  * PHP version 5
- * @copyright  Cliff Parnitzky 2017-2017
+ * @copyright  Cliff Parnitzky 2017-2019
  * @author     Cliff Parnitzky
  * @package    MonitoringResponseTimeGraph
  * @license    LGPL
@@ -39,5 +39,13 @@ $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-in']    
 $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['zoom-out']   = 'Zoom out';
 $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-left']  = 'Move left';
 $GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['menu']['move-right'] = 'Move right';
+
+/**
+ * Response time graph legend
+ */
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['legend']['org'] = 'Original';
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['legend']['min'] = 'Minimum';
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['legend']['max'] = 'Maximum';
+$GLOBALS['TL_LANG']['MSC']['MonitoringResponseTimeGraph']['legend']['avg'] = 'Average';
 
 ?>
