@@ -101,7 +101,7 @@
       content: '<b><?php echo $group['customer']; ?></b><br/><?php echo $group['website']; ?>',
       options: {
         drawPoints: {
-            style: 'circle'
+          style: 'circle'
         }
       }
     });
@@ -123,7 +123,7 @@
     var container = document.getElementById('monitoring-responseTimeGraph');
     responseTimeGraph = new vis.Graph2d(container, data, groups, options);
     
-    /**
+  /**
    * this function fills the external legend with content using the getLegend() function.
    */
   function populateExternalLegend() {
