@@ -1,33 +1,38 @@
 {
-	"name":"contao-monitoring/monitoring-response-time-graph",
-	"description":"Provides a graph component to visualize the response times for the Contao Monitoring system.",
-	"keywords":["contao","monitoring","graph","response"],
-	"type":"contao-module",
-	"homepage":"https://github.com/ContaoMonitoring/monitoring-response-time-graph",
-	"license":"LGPL-3.0-or-later",
-	"authors":[
+	"name": "contao-monitoring/monitoring-response-time-graph",
+	"description": "Provides a graph component to visualize the response times for the Contao Monitoring system.",
+	"keywords": [
+		"contao",
+		"monitoring",
+		"graph",
+		"response"
+	],
+	"type": "contao-module",
+	"homepage": "https://github.com/ContaoMonitoring",
+	"license": "LGPL-3.0-or-later",
+	"authors": [
 		{
-			"name":"Cliff Parnitzky",
-			"email":"contao@cliff-parnitzky.de",
-			"role":"Developer"
+			"name": "Cliff Parnitzky",
+			"email": "contao@cliff-parnitzky.de",
+			"role": "Developer"
 		}
 	],
-	"support":{
-		"email":"contao@cliff-parnitzky.de",
-		"issues":"https://github.com/ContaoMonitoring/monitoring-response-time-graph/issues",
-		"source":"https://github.com/ContaoMonitoring/monitoring-response-time-graph"
+	"support": {
+		"email": "contao@cliff-parnitzky.de",
+		"issues": "https://github.com/ContaoMonitoring/monitoring-response-time-graph/issues",
+		"source": "https://github.com/ContaoMonitoring/monitoring-response-time-graph"
 	},
-	"require":{
-		"php":">=5.3",
-		"contao/core-bundle":"~3.2 || ~4.4",
-		"contao-community-alliance/composer-plugin":"~2.4 || ~3.0",
-		"contao-monitoring/monitoring":"~1.8",
-		"cliffparnitzky/vis.js":"~4.10"
+	"require": {
+		"php": ">=7.4",
+		"contao/core-bundle": "~4.9",
+		"contao-community-alliance/composer-plugin": "~3.0",
+		"contao-monitoring/monitoring": "~1.8",
+		"cliffparnitzky/vis.js": "~4.10"
 	},
-	"extra":{
-		"contao":{
-			"sources":{
-				"system/modules/MonitoringResponseTimeGraph":"system/modules/MonitoringResponseTimeGraph"
+	"extra": {
+		"contao": {
+			"sources": {
+				"system/modules/MonitoringResponseTimeGraph": "system/modules/MonitoringResponseTimeGraph"
 			}
 		},
 		"branch-alias": {
